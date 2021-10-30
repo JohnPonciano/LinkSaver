@@ -1,5 +1,5 @@
 const os = require('os')
-
+const log = require ('./logger')
 const {freemem,totalmem,platform,hostname,networkInterfaces} = os
 
 
@@ -9,7 +9,7 @@ setInterval(()=>{
     const percent = parseInt((mem/total) * 100)
     const host = hostname()
     const interfaces = networkInterfaces()
-
+    const date = Date(`dd-mm-yy`);
 
     //GET IP usign this code 
     var addresses = [];
@@ -24,6 +24,7 @@ setInterval(()=>{
 
 
     const stats = {
+        Day: `${date}`,
         OS:`${platform()}`,
         HostName:`${host}`,
         IPv4:`${addresses}`,
@@ -35,7 +36,6 @@ setInterval(()=>{
     console.clear()
     console.log(" == PC STATS ==")
     console.table(stats)
-
+    log(`${JSON.stringify(stats)}\n`)
 },1000)
-
 
