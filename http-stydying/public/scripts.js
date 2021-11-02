@@ -28,7 +28,14 @@ function addElement({ name, url }) {
     a.target = "_blank"
 
     trash.innerHTML = "x"
-    trash.onclick = () => removeElement(trash)
+    trash.onclick = () => {
+        fetch(`http://localhost:4500/?name=${name}&url=${url}&del=1`,{
+            method: 'DELETE'
+        }).then(removeElement(trash))
+    }
+        
+    
+
 
     li.append(a)
     li.append(trash)
@@ -36,22 +43,24 @@ function addElement({ name, url }) {
 
 }
 
+
+
 function removeElement(el) {
     if (confirm('Tem certeza que deseja deletar?'))
-        el.parentNode.remove()
+        data = el.parentNode
+        data.remove()
 }
+
 
 function update(name,url){
     fetch(`http://localhost:4500/?name=${name}&url=${url}`,{
-            method: 'PUT'
+        method: 'PUT'
         }).then((data)=>data.json())
         reload()
 
 }
 
 form.addEventListener("submit", (event) => {
-    
-
     event.preventDefault();
 
     let { value } = input
@@ -66,8 +75,6 @@ form.addEventListener("submit", (event) => {
 
     if (!/^http/.test(url)) 
         return alert("Digite a url da maneira correta")
-    
-    
     update(name,url)
     input.value = ''
     
