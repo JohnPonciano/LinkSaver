@@ -3,6 +3,21 @@ const input = document.querySelector("input")
 const form = document.querySelector('form')
 
 
+async function load(){
+    const res = await fetch("http://localhost:4500").then((data)=>data.json())
+
+    console.log(res.urls)
+    
+    res.urls.map(({ name, url })=> addElement({ name, url }))
+}
+
+load()
+
+function reload() {
+    location.reload()
+    location.load()
+}
+
 function addElement({ name, url }) {
     const li = document.createElement('li')
     const a = document.createElement("a")
@@ -18,6 +33,7 @@ function addElement({ name, url }) {
     li.append(a)
     li.append(trash)
     ul.append(li)
+
 }
 
 function removeElement(el) {
@@ -25,7 +41,17 @@ function removeElement(el) {
         el.parentNode.remove()
 }
 
+function update(name,url){
+    fetch(`http://localhost:4500/?name=${name}&url=${url}`,{
+            method: 'PUT'
+        }).then((data)=>data.json())
+        reload()
+
+}
+
 form.addEventListener("submit", (event) => {
+    
+
     event.preventDefault();
 
     let { value } = input
@@ -40,8 +66,9 @@ form.addEventListener("submit", (event) => {
 
     if (!/^http/.test(url)) 
         return alert("Digite a url da maneira correta")
-
-    addElement({ name, url })
-
-    input.value = ""
+    
+    
+    update(name,url)
+    input.value = ''
+    
 })

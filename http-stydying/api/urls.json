@@ -3,6 +3,42 @@
     {
       "name": "Rocketseat",
       "url": "http://rocketseat.com.br"
+    },
+    {
+      "name": "Google",
+      "url": "http://google.com.br"
+    },
+    {
+      "name": "Discord",
+      "url": "https://discord.com/"
+    },
+    {
+      "name": "WebWhatsapp",
+      "url": "https://web.whatsapp.com/"
+    },
+    {
+      "name": "StackOverflow",
+      "url": "https://stackoverflow.com/"
+    },
+    {
+      "name": "Localhost",
+      "url": "http://localhost:4500/"
+    },
+    {
+      "name": "ASMR",
+      "url": "https://www.youtube.com/watch?v=RObV7t3BRmA"
+    },
+    {
+      "name": "fetch",
+      "url": "https://fetch.spec.whatwg.org/"
+    },
+    {
+      "name": "Alura",
+      "url": "https://cursos.alura.com.br/forum/topico-duvida-sobre-o-comando-fetch-144626"
+    },
+    {
+      "name": "newbedev",
+      "url": "https://newbedev.com/javascript-javascript-refresh-element-code-example"
     }
   ]
 }
